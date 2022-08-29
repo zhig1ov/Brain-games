@@ -17,7 +17,12 @@
     "url": "https://github.com/zhig1ov/frontend-project-lvl1/issues"
   },
   "homepage": "https://github.com/zhig1ov/frontend-project-lvl1#readme",
-  "devDependencies": {
+  "dependencies": {
     "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "eslint": "^8.23.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
   }
 }
