@@ -3,7 +3,7 @@ import readlineSync from 'readline-sync';
 
 const brainEven = () => {
   function incorrectResponse(youAnswer, userName, correctAnswer) {
-    console.log(`"${youAnswer}" is wrong answer ;(. Correct answer was ${correctAnswer}.`);
+    console.log(`'${youAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
     console.log(`Let's try again, ${userName}!`);
   }
 
