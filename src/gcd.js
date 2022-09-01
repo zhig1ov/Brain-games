@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-const brainCalc = () => {
+const brainGcd = () => {
   function incorrectResponse(youAnswer, userName, correctAnswer) {
     console.log(`'${youAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
     console.log(`Let's try again, ${userName}!`);
@@ -10,27 +10,32 @@ const brainCalc = () => {
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
 
-  console.log('What is the result of the expression?');
+  console.log('Find the greatest common divisor of given numbers.');
 
-  const operators = ['+', '-', '*'];
-  const expressions = {
-    '+': (a, b) => a + b,
-    '-': (a, b) => a - b,
-    '*': (a, b) => a * b,
-  };
+  function getGcd(a, b) {
+    let numOne = Math.abs(a);
+    let numTwo = Math.abs(b);
+    if (numTwo > numOne) { const temp = numOne; numOne = numTwo; numTwo = temp; }
+    /* eslint-disable no-constant-condition */
+    while (true) {
+      if (numTwo === 0) return numOne;
+      numOne %= numTwo;
+      if (numOne === 0) return numTwo;
+      numTwo %= numOne;
+    }
+  }
 
   for (let i = 1; i <= 3; i += 1) {
     const randNum1 = Math.floor(Math.random() * 99) + 1;
     const randNum2 = Math.floor(Math.random() * 99) + 1;
-    const operator = operators[Math.floor(Math.random() * 3)];
-    const expression = `${randNum1} ${operator} ${randNum2}`;
-    const correctAnswer = expressions[operator](randNum1, randNum2);
+    const expression = `${randNum1} ${randNum2}`;
+    const correctAnswer = getGcd(randNum1, randNum2);
 
     const question = `Question: ${expression}`;
     console.log(question);
     const youAnswer = readlineSync.question('Your answer: ');
 
-    if (parseInt(youAnswer, 10) === correctAnswer) {
+    if (correctAnswer === parseInt(youAnswer, 10)) {
       console.log('Correct!');
     } else {
       incorrectResponse(youAnswer, userName, correctAnswer);
@@ -43,4 +48,4 @@ const brainCalc = () => {
   }
 };
 
-export default brainCalc;
+export default brainGcd;
