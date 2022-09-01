@@ -7,18 +7,18 @@ const brainEven = () => {
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
   for (let i = 1; i <= 3; i += 1) {
-    const random = Math.floor(Math.random() * 99) + 1;
+    const randomNum = Math.floor(Math.random() * 99) + 1;
 
-    const youAnswer = getAnswer(random);
+    const youAnswer = getAnswer(randomNum);
 
-    if (random % 2 === 0) {
+    if (randomNum % 2 === 0) {
       if (youAnswer === 'yes') {
         console.log('Correct!');
       } else if (youAnswer !== 'yes') {
         incorrectResponse(youAnswer, userName, 'yes');
         break;
       }
-    } else if (random % 2 !== 0) {
+    } else if (randomNum % 2 !== 0) {
       if (youAnswer === 'no') {
         console.log('Correct!');
       } else if (youAnswer !== 'no') {
