@@ -1,7 +1,7 @@
-import { incorrectResponse, getAnswer } from './utils/utils.js';
+import { responseCheck, getAnswer } from './utils/utils.js';
 import sayHi from './cli.js';
 
-const isEven = n => !(n % 2) ? 'yes' : 'no';
+const isEven = (n) => (!(n % 2) ? 'yes' : 'no');
 
 const brainEven = () => {
   const userName = sayHi();
@@ -13,12 +13,7 @@ const brainEven = () => {
     const correctAnswer = isEven(randomNum);
     const youAnswer = getAnswer(randomNum);
 
-    if (correctAnswer === youAnswer) {
-      console.log('Correct!');
-    } else {
-      incorrectResponse(youAnswer, userName, correctAnswer);
-      break;
-    }
+    if (responseCheck(userName, youAnswer, correctAnswer) === 'stop') { break; }
     if (i === 3) { console.log(`Congratulations, ${userName}!`); }
   }
 };

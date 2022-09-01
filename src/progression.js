@@ -1,4 +1,4 @@
-import { incorrectResponse, getAnswer } from './utils/utils.js';
+import { responseCheck, getAnswer } from './utils/utils.js';
 import sayHi from './cli.js';
 
 const brainProgression = () => {
@@ -21,14 +21,9 @@ const brainProgression = () => {
     const correctAnswer = numbers[numberToDelete];
     numbers[numberToDelete] = '..';
     const stringNumbers = numbers.join(' ');
-    const youAnswer = getAnswer(stringNumbers);
+    const youAnswer = parseInt(getAnswer(stringNumbers), 10);
 
-    if (correctAnswer === parseInt(youAnswer, 10)) {
-      console.log('Correct!');
-    } else {
-      incorrectResponse(youAnswer, userName, correctAnswer);
-      break;
-    }
+    if (responseCheck(userName, youAnswer, correctAnswer) === 'stop') { break; }
     if (i === 3) { console.log(`Congratulations, ${userName}!`); }
   }
 };
