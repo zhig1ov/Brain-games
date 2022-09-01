@@ -1,4 +1,4 @@
-import { incorrectResponse, getAnswer, getGcd } from './utils/utils.js';
+import { responseCheck, getAnswer, getGcd } from './utils/utils.js';
 import sayHi from './cli.js';
 
 const brainGcd = () => {
@@ -12,14 +12,9 @@ const brainGcd = () => {
     const expression = `${randNum1} ${randNum2}`;
     const correctAnswer = getGcd(randNum1, randNum2);
 
-    const youAnswer = getAnswer(expression);
+    const youAnswer = parseInt(getAnswer(expression), 10);
 
-    if (correctAnswer === parseInt(youAnswer, 10)) {
-      console.log('Correct!');
-    } else {
-      incorrectResponse(youAnswer, userName, correctAnswer);
-      break;
-    }
+    if (responseCheck(userName, youAnswer, correctAnswer) === 'stop') { break; }
     if (i === 3) { console.log(`Congratulations, ${userName}!`); }
   }
 };

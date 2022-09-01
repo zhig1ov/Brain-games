@@ -1,4 +1,4 @@
-import { incorrectResponse, getAnswer } from './utils/utils.js';
+import { getAnswer, responseCheck } from './utils/utils.js';
 import sayHi from './cli.js';
 
 const operators = ['+', '-', '*'];
@@ -20,14 +20,9 @@ const brainCalc = () => {
     const expression = `${randNum1} ${operator} ${randNum2}`;
     const correctAnswer = expressions[operator](randNum1, randNum2);
 
-    const youAnswer = getAnswer(expression);
+    const youAnswer = parseInt(getAnswer(expression), 10);
 
-    if (parseInt(youAnswer, 10) === correctAnswer) {
-      console.log('Correct!');
-    } else {
-      incorrectResponse(youAnswer, userName, correctAnswer);
-      break;
-    }
+    if (responseCheck(userName, youAnswer, correctAnswer) === 'stop') { break; }
     if (i === 3) { console.log(`Congratulations, ${userName}!`); }
   }
 };

@@ -1,4 +1,4 @@
-import { incorrectResponse, getAnswer } from './utils/utils.js';
+import { responseCheck, getAnswer } from './utils/utils.js';
 import sayHi from './cli.js';
 
 const isPrime = (num) => {
@@ -18,12 +18,7 @@ const brainPrime = () => {
     const correctAnswer = isPrime(randomNum);
     const youAnswer = getAnswer(randomNum);
 
-    if (correctAnswer === youAnswer) {
-      console.log('Correct!');
-    } else {
-      incorrectResponse(youAnswer, userName, correctAnswer);
-      break;
-    }
+    if (responseCheck(userName, youAnswer, correctAnswer) === 'stop') { break; }
     if (i === 3) { console.log(`Congratulations, ${userName}!`); }
   }
 };
