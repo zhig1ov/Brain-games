@@ -1,4 +1,4 @@
-import { responseCheck, getAnswer } from './utils/utils.js';
+import { responseCheck, getAnswer, howToAnswer } from './utils/utils.js';
 import sayHi from './cli.js';
 
 const isEven = (n) => (!(n % 2) ? 'yes' : 'no');
@@ -6,7 +6,7 @@ const isEven = (n) => (!(n % 2) ? 'yes' : 'no');
 const brainEven = () => {
   const userName = sayHi();
 
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  howToAnswer('even');
 
   for (let i = 1; i <= 3; i += 1) {
     const randomNum = Math.floor(Math.random() * 99) + 1;
