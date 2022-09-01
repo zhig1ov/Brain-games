@@ -1,4 +1,4 @@
-import { responseCheck, getAnswer } from './utils/utils.js';
+import { responseCheck, getAnswer, howToAnswer } from './utils/utils.js';
 import sayHi from './cli.js';
 
 const isPrime = (num) => {
@@ -11,7 +11,7 @@ const isPrime = (num) => {
 const brainPrime = () => {
   const userName = sayHi();
 
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no"');
+  howToAnswer('prime');
 
   for (let i = 1; i <= 3; i += 1) {
     const randomNum = Math.floor(Math.random() * 19) + 1;

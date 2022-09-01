@@ -5,10 +5,18 @@ const incorrectResponse = (youAnswer, userName, correctAnswer) => {
   console.log(`Let's try again, ${userName}!`);
 };
 
+const swap = (numOne, numTwo) => {
+  let firstNum = numOne;
+  let secondNum = numTwo;
+  const temp = firstNum;
+  firstNum = secondNum;
+  secondNum = temp;
+};
+
 const getGcd = (a, b) => {
   let numOne = Math.abs(a);
   let numTwo = Math.abs(b);
-  if (numTwo > numOne) { const temp = numOne; numOne = numTwo; numTwo = temp; }
+  if (numTwo > numOne) { swap(numOne, numTwo); }
   /* eslint-disable no-constant-condition */
   while (true) {
     if (numTwo === 0) return numOne;
@@ -33,6 +41,8 @@ const responseCheck = (userName, youAnswer, correctAnswer) => {
   return 'stop';
 };
 
+const howToAnswer = (howNumber) => console.log(`Answer "yes" if given number is ${howNumber}. Otherwise answer "no"`);
+
 export {
-  getGcd, incorrectResponse, getAnswer, responseCheck,
+  getGcd, incorrectResponse, getAnswer, responseCheck, howToAnswer,
 };

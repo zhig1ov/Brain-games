@@ -17,7 +17,7 @@ const brainProgression = () => {
       initialNumber += step;
     }
 
-    const numberToDelete = Math.floor(Math.random() * numbers.length + 1);
+    const numberToDelete = Math.floor(Math.random() * numbers.length);
     const correctAnswer = numbers[numberToDelete];
     numbers[numberToDelete] = '..';
     const stringNumbers = numbers.join(' ');
